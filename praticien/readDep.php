@@ -32,7 +32,7 @@ if($num>0){
 }
 else{
   echo json_encode(
-    array("message" => "Aucun departements de praticiens trouvés.")
+    array("message" => "Aucun departement de praticiens trouvés.")
   );
 }
 ?>

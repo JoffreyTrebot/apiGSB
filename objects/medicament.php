@@ -20,6 +20,15 @@ class Medicament{
         $this->conn = $db;
     }
 
+    public function read(){
+
+      $query = "SELECT * FROM medicament";
+
+      $stmt = $this->conn->prepare($query);
+      $stmt->execute();
+
+      return $stmt;
+    }
     // used when filling up the update product form
     public function readOne(){
         // query to read single record

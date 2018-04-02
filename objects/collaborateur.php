@@ -21,7 +21,7 @@ class Collaborateur{
     }
 
     // used when filling up the update product form
-    function readOne(){
+    public function readOne(){
 
         // query to read single record
         $query = "SELECT * FROM collaborateur INNER JOIN visiteur ON visiteur.COL_MATRICULE = collaborateur.COL_MATRICULE INNER JOIN labo ON collaborateur.LAB_CODE = labo.LAB_CODE LEFT JOIN secteur ON collaborateur.SEC_CODE = secteur.SEC_CODE WHERE collaborateur.COL_MATRICULE = ?";

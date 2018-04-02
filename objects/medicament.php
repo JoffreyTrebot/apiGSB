@@ -21,7 +21,7 @@ class Medicament{
     }
 
     // used when filling up the update product form
-    function readOne(){
+    public function readOne(){
         // query to read single record
         $query = "SELECT * FROM medicament INNER JOIN famille ON medicament.FAM_CODE = famille.FAM_CODE WHERE medicament.MED_DEPOTLEGAL = ?";
 

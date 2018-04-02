@@ -20,6 +20,14 @@ class Collaborateur{
         $this->conn = $db;
     }
 
+    public function read(){
+      $query = "SELECT * FROM collaborateur INNER JOIN visiteur ON visiteur.COL_MATRICULE = collaborateur.COL_MATRICULE INNER JOIN labo ON collaborateur.LAB_CODE = labo.LAB_CODE LEFT JOIN secteur ON collaborateur.SEC_CODE = secteur.SEC_CODE";
+
+      $stmt = $this->conn->prepare($query);
+      $stmt->execute();
+
+      return $stmt;
+    }
     // used when filling up the update product form
     public function readOne(){
 

@@ -9,7 +9,7 @@ Actuellement ce que l'on peut obtenir avec l'api :
   - GET praticien
 
   - GET with id, medicament
-//  - GET medicament
+  - GET medicament
 
-//  - GET collaborateur
-//  - GET with id, collaborateur
+  - GET collaborateur
+  - GET with id, collaborateur

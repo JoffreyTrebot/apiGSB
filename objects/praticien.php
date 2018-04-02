@@ -21,14 +21,31 @@ class Praticien{
         $this->conn = $db;
     }
 
-    public function read(){
+    function readOne(){
 
-      $query = "SELECT * FROM praticien";
+        // query to read single record
+        $query = "SELECT * FROM praticien WHERE PRA_NUM = ?";
 
-      $stmt = $this->conn->prepare($query);
-      $stmt->execute();
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
 
-      return $stmt;
+        // bind id of product to be updated
+        $stmt->bindParam(1, $this->PRA_NUM);
+
+        // execute query
+        $stmt->execute();
+
+        // get retrieved row
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // set values to object properties
+        $this->PRA_NOM = $row['PRA_NOM'];
+        $this->PRA_PRENOM = $row['PRA_PRENOM'];
+        $this->PRA_ADRESSE = $row['PRA_ADRESSE'];
+        $this->PRA_CP = $row['PRA_CP'];
+        $this->PRA_VILLE = $row['PRA_VILLE'];
+        $this->PRA_COEFNOTORIETE = $row['PRA_COEFNOTORIETE'];
+        $this->TYP_CODE = $row['TYP_CODE'];
     }
 
     public function readDep(){

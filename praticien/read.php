@@ -24,13 +24,13 @@ if($num>0){
     $praticien_item=array(
       "PRA_NUM" => $PRA_NUM,
       "PRA_NOM" => $PRA_NOM,
-      "PRA_PRENOM" => $PRA_NUM,
+      "PRA_PRENOM" => $PRA_PRENOM,
       "PRA_CP" => $PRA_CP,
       "PRA_ADRESSE" => $PRA_ADRESSE,
       "PRA_VILLE" => $PRA_VILLE,
       "PRA_COEFNOTORIETE" => $PRA_COEFNOTORIETE,
-      "TYP_CODE" => $TYP_CODE,
-      "dep" => $dep
+      "dep" => $dep,
+      "TYP_LIEU" => $TYP_LIEU
     );
 
     array_push($praticien_arr["praticiens"], $praticien_item);

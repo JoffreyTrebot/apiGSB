@@ -13,15 +13,16 @@ class Praticien{
     public $PRA_CP;
     public $PRA_VILLE;
     public $PRA_COEFNOTORIETE;
-    public $TYP_CODE;
     public $dep;
+
+    public $TYP_LIEU;
 
     // constructor with $db as database connection
     public function __construct($db){
         $this->conn = $db;
     }
     public function read(){
-      $query="SELECT * FROM praticien";
+      $query="SELECT PRA_NUM, PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE, dep, TYP_LIEU FROM praticien INNER JOIN type_praticien ON praticien.TYP_CODE = type_praticien.TYP_CODE";
 
       $stmt = $this->conn->prepare($query);
       $stmt->execute();

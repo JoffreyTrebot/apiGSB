@@ -27,14 +27,34 @@ class Rapport_visite{
       return $stmt;
     }
 
+    // create product
     public function create(){
 
-      $query = "INSERT INTO rapport_visite VALUES(?,?,?,?,?)";
+        // query to insert record
+        $query = "INSERT INTO rapport_visite SET COL_MATRICULE=:COL_MATRICULE, PRA_NUM=:PRA_NUM, RAP_DATE=:RAP_DATE, RAP_BILAN=:RAP_BILAN";
 
-      $stmt = $this->conn->prepare($query);
-      $stmt->execute(array($COL_MATRICULE,$RAP_NUM,$PRA_NUM,$RAP_DATE,$RAP_BILAN));
+        // prepare query
+        $stmt = $this->conn->prepare($query);
 
-      return $stmt;
+        // sanitize
+        $this->COL_MATRICULE=htmlspecialchars(strip_tags($this->COL_MATRICULE));
+        $this->PRA_NUM=htmlspecialchars(strip_tags($this->PRA_NUM));
+        $this->RAP_DATE=htmlspecialchars(strip_tags($this->RAP_DATE));
+        $this->RAP_BILAN=htmlspecialchars(strip_tags($this->RAP_BILAN));
+
+        // bind values
+        $stmt->bindParam(":COL_MATRICULE", $this->COL_MATRICULE);
+        $stmt->bindParam(":PRA_NUM", $this->PRA_NUM);
+        $stmt->bindParam(":RAP_DATA", $this->RAP_DATE);
+        $stmt->bindParam(":RAP_BILAN", $this->RAP_BILAN);
+
+        // execute query
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
+
     }
 }
 ?>

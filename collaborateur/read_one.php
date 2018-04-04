@@ -26,6 +26,7 @@ $collaborateur->readOne();
 $collaborateur_arr = array(
     "COL_MATRICULE" =>  $collaborateur->COL_MATRICULE,
     "COL_NOM" => $collaborateur->COL_NOM,
+    "COL_DATEEMBAUCHE" => $collaborateur->COL_DATEEMBAUCHE,
     "COL_PRENOM" => $collaborateur->COL_PRENOM,
     "COL_ADRESSE" => $collaborateur->COL_ADRESSE,
     "COL_CP" => $collaborateur->COL_CP,

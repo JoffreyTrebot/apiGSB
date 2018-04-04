@@ -20,10 +20,11 @@ if($num>0){
 
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     extract($row);
-    
+
     $collaborateur_item=array(
       "COL_MATRICULE" => $COL_MATRICULE,
       "COL_NOM" => $COL_NOM,
+      "COL_DATEEMBAUCHE" => $COL_DATEEMBAUCHE,
       "COL_PRENOM" => $COL_PRENOM,
       "COL_CP" => $COL_CP,
       "COL_ADRESSE" => $COL_ADRESSE,

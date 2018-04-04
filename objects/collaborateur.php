@@ -8,6 +8,7 @@ class Collaborateur{
     // object properties
     public $COL_MATRICULE;
     public $COL_NOM;
+    public $COL_DATEEMBAUCHE;
     public $COL_PRENOM;
     public $COL_ADRESSE;
     public $COL_CP;
@@ -48,6 +49,7 @@ class Collaborateur{
 
         // set values to object properties
         $this->COL_NOM = $row['COL_NOM'];
+        $this->COL_DATEEMBAUCHE = $row['COL_DATEEMBAUCHE'];
         $this->COL_PRENOM = $row['COL_PRENOM'];
         $this->COL_ADRESSE = $row['COL_ADRESSE'];
         $this->COL_CP = $row['COL_CP'];

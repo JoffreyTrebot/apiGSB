@@ -31,10 +31,11 @@ class Rapport_visite{
     public function create(){
 
         // query to insert record
-        $query = "INSERT INTO rapport_visite SET COL_MATRICULE=:COL_MATRICULE, PRA_NUM=:PRA_NUM, RAP_DATE=:RAP_DATE, RAP_BILAN=:RAP_BILAN";
+        $query = "INSERT INTO rapport_visite(COL_MATRICULE, PRA_NUM, RAP_DATE, RAP_BILAN) VALUES (?,?,?,?)";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
+
 
         // sanitize
         $this->COL_MATRICULE=htmlspecialchars(strip_tags($this->COL_MATRICULE));
@@ -42,14 +43,9 @@ class Rapport_visite{
         $this->RAP_DATE=htmlspecialchars(strip_tags($this->RAP_DATE));
         $this->RAP_BILAN=htmlspecialchars(strip_tags($this->RAP_BILAN));
 
-        // bind values
-        $stmt->bindParam(":COL_MATRICULE", $this->COL_MATRICULE);
-        $stmt->bindParam(":PRA_NUM", $this->PRA_NUM);
-        $stmt->bindParam(":RAP_DATA", $this->RAP_DATE);
-        $stmt->bindParam(":RAP_BILAN", $this->RAP_BILAN);
 
         // execute query
-        if($stmt->execute()){
+        if($stmt->execute(array($this->COL_MATRICULE, $this->PRA_NUM, $this->RAP_DATE, $this->RAP_BILAN))){
             return true;
         }
 

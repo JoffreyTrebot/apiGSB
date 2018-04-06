@@ -14,26 +14,35 @@ $db = $database->getConnection();
 
 $rapportvisite = new Rapport_visite($db);
 
-// get posted data
-$data = json_decode(file_get_contents("php://input"));
+if(!isset($_POST['COL_MATRICULE']) OR !isset($_POST['PRA_NUM']) OR !isset($_POST['RAP_BILAN']) OR empty($_POST['COL_MATRICULE']) OR empty($_POST['PRA_NUM']) OR empty($_POST['RAP_BILAN']))
+{
+  echo '{';
+      echo '"message": "Des informations sont manquantes."';
+  echo '}';
+}
+else {
+  
+  // set product property values
+  $rapportvisite->COL_MATRICULE = $_POST['COL_MATRICULE'];
+  $rapportvisite->PRA_NUM = $_POST['PRA_NUM'];
+  $rapportvisite->RAP_DATE = date('Y-m-d H:i:s');
+  $rapportvisite->RAP_BILAN = $_POST['RAP_BILAN'];
 
-// set product property values
-$rapportvisite->COL_MATRICULE = $data->COL_MATRICULE;
-$rapportvisite->PRA_NUM = $data->PRA_NUM;
-$rapportvisite->RAP_DATE = date('Y-m-d H:i:s');
-$rapportvisite->RAP_BILAN = $data->RAP_BILAN;
+  // create the product
+  if($rapportvisite->create()){
+      echo '{';
+          echo '"message": "Rapport de visite créer."';
+      echo '}';
+  }
 
-// create the product
-if($rapportvisite->create()){
-    echo '{';
-        echo '"message": "Rapport de visite créer."';
-    echo '}';
+  // if unable to create the product, tell the user
+  else{
+      echo '{';
+          echo '"message": "Impossible de créer le rapport de visite."';
+      echo '}';
+  }
 }
 
-// if unable to create the product, tell the user
-else{
-    echo '{';
-        echo '"message": "Impossible de créer le rapport de visite."';
-    echo '}';
-}
+
+
 ?>

@@ -11,33 +11,28 @@ $db = $database->getConnection();
 
 $rapportvisite = new Rapport_visite($db);
 
-$stmt = $rapportvisite->read();
+$stmt = $rapportvisite->readMax();
 $num = $stmt->rowCount();
 
 if($num>0){
   $rapportvisite_arr=array();
-  $rapportvisite_arr["Rapport_visite"]=array();
+  $rapportvisite_arr["Max_rapport"]=array();
 
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
     extract($row);
 
     $rapportvisite_item=array(
-      "COL_MATRICULE" => $COL_MATRICULE,
-      "RAP_NUM" => $RAP_NUM,
-      "PRA_NUM" => $PRA_NUM,
-      "RAP_DATE" => $RAP_DATE,
-      "RAP_BILAN" => $RAP_BILAN,
-      "MOTIF_LIBELLE" => $MOTIF_LIBELLE
+      "MAX" => $MAX
     );
 
-    array_push($rapportvisite_arr["Rapport_visite"], $rapportvisite_item);
+    array_push($rapportvisite_arr["Max_rapport"], $rapportvisite_item);
   }
 
   echo json_encode($rapportvisite_arr);
 }
 else{
   echo json_encode(
-    array("message" => "Aucun rapports de visite trouvés.")
+    array("message" => "Impossible de calculer le nombre de rapports.")
   );
 }
 ?>

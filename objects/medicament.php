@@ -22,7 +22,7 @@ class Medicament{
 
     public function read(){
 
-      $query = "SELECT * FROM medicament";
+      $query = "SELECT * FROM medicament ORDER BY MED_DEPOTLEGAL";
 
       $stmt = $this->conn->prepare($query);
       $stmt->execute();

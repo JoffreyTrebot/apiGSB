@@ -21,7 +21,7 @@ class Rapport_visite{
 
     public function read(){
 
-      $query = "SELECT rapport_visite.COL_MATRICULE,rapport_visite.RAP_NUM,RAP_BILAN,PRA_NUM,RAP_DATE,motif.MOTIF_LIBELLE FROM rapport_visite INNER JOIN motiver ON motiver.RAP_NUM = rapport_visite.RAP_NUM INNER JOIN motif ON motif.MOTIF_CODE = motiver.MOTIF_CODE";
+      $query = "SELECT rapport_visite.COL_MATRICULE,rapport_visite.RAP_NUM,RAP_BILAN,PRA_NUM,RAP_DATE,motif.MOTIF_LIBELLE FROM rapport_visite INNER JOIN motiver ON motiver.RAP_NUM = rapport_visite.RAP_NUM INNER JOIN motif ON motif.MOTIF_CODE = motiver.MOTIF_CODE ORDER BY rapport_visite.RAP_NUM" ;
 
       $stmt = $this->conn->prepare($query);
       $stmt->execute();

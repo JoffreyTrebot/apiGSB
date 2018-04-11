@@ -14,7 +14,7 @@ $db = $database->getConnection();
 
 $rapportvisite = new Rapport_visite($db);
 
-if(!isset($_POST['COL_MATRICULE']) OR !isset($_POST['MOTIF_LIBELLE']) OR !isset($_POST['PRA_NUM']) OR !isset($_POST['RAP_BILAN']) OR empty($_POST['COL_MATRICULE']) OR empty($_POST['MOTIF_LIBELLE']) OR empty($_POST['PRA_NUM']) OR empty($_POST['RAP_BILAN']))
+if(!isset($_POST['COL_MATRICULE']) OR !isset($_POST['RAP_DATE']) OR!isset($_POST['MOTIF_LIBELLE']) OR !isset($_POST['PRA_NUM']) OR !isset($_POST['RAP_BILAN']) OR empty($_POST['COL_MATRICULE']) OR empty($_POST['RAP_DATE']) OR empty($_POST['MOTIF_LIBELLE']) OR empty($_POST['PRA_NUM']) OR empty($_POST['RAP_BILAN']))
 {
   echo '{';
       echo '"message": "Des informations sont manquantes."';
@@ -25,7 +25,7 @@ else {
   // set product property values
   $rapportvisite->COL_MATRICULE = $_POST['COL_MATRICULE'];
   $rapportvisite->PRA_NUM = $_POST['PRA_NUM'];
-  $rapportvisite->RAP_DATE = date('Y-m-d H:i:s');
+  $rapportvisite->RAP_DATE = $_POST['RAP_DATE'];
   $rapportvisite->RAP_BILAN = $_POST['RAP_BILAN'];
   $rapportvisite->MOTIF_LIBELLE = $_POST['MOTIF_LIBELLE'];
 

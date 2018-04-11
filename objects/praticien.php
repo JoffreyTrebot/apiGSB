@@ -22,7 +22,7 @@ class Praticien{
         $this->conn = $db;
     }
     public function read(){
-      $query="SELECT PRA_NUM, PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE, dep, TYP_LIEU FROM praticien INNER JOIN type_praticien ON praticien.TYP_CODE = type_praticien.TYP_CODE";
+      $query="SELECT PRA_NUM, PRA_NOM, PRA_PRENOM, PRA_ADRESSE, PRA_CP, PRA_VILLE, PRA_COEFNOTORIETE, dep, TYP_LIEU FROM praticien INNER JOIN type_praticien ON praticien.TYP_CODE = type_praticien.TYP_CODE ORDER BY PRA_NUM";
 
       $stmt = $this->conn->prepare($query);
       $stmt->execute();

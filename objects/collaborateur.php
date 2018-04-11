@@ -22,7 +22,7 @@ class Collaborateur{
     }
 
     public function read(){
-      $query = "SELECT * FROM collaborateur INNER JOIN visiteur ON visiteur.COL_MATRICULE = collaborateur.COL_MATRICULE INNER JOIN labo ON collaborateur.LAB_CODE = labo.LAB_CODE LEFT JOIN secteur ON collaborateur.SEC_CODE = secteur.SEC_CODE";
+      $query = "SELECT * FROM collaborateur INNER JOIN visiteur ON visiteur.COL_MATRICULE = collaborateur.COL_MATRICULE INNER JOIN labo ON collaborateur.LAB_CODE = labo.LAB_CODE LEFT JOIN secteur ON collaborateur.SEC_CODE = secteur.SEC_CODE ORDER BY collaborateur.COL_MATRICULE";
 
       $stmt = $this->conn->prepare($query);
       $stmt->execute();
